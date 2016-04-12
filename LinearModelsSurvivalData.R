@@ -37,3 +37,5 @@ ag2 <- coxph(Surv(start, stop, event) ~ strata(rx) + number + size + enum + clus
 plot(survfit(ag1), conf.int = TRUE)
 plot(survfit(ag2), conf.int = TRUE, col=1:2)
 legend("topright", legend=c(1,2), lty=1, col=1:2, text.col=1:2, title= "rx")
+
+
