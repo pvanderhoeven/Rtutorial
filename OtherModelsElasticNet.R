@@ -28,3 +28,19 @@ tail(acsY)
 ?set.seed()
 set.seed(1863561)
 acsCV1 <- cv.glmnet(x=acsX, y=acsY, family="binomial", nfold=5)
+head(acsCV1)
+# lambda.min => lambda that minimize square error
+acsCV1$lambda.min
+acsCV1$lambda.1se
+plot(acsCV1)
+
+coef(acsCV1, s="lambda.1se")
+plot(acsCV1$glmnet.fit, xvar = "lambda")
+
+# create lines lambda.min and lambda.1se
+abline(v=log(c(acsCV1$lambda.min, acsCV1$lambda.1se)), lty=2)
+
+# glmnet(alpha)
+acsCV2 <- cv.glmnet(x=acsX, y=acsY, family="binomial", nfold=5, alpha=0)
+plot(acsCV2$glmnet.fit, xvar = "lambda")
+abline(v=log(c(acsCV2$lambda.min, acsCV2$lambda.1se)), lty=2)
