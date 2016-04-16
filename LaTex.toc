@@ -1,0 +1,5 @@
+\contentsline {section}{\numberline {1}getting started}{1}
+\contentsline {section}{\numberline {2}more information}{1}
+\contentsline {subsection}{\numberline {2.1}First subsection}{1}
+\contentsline {subsection}{\numberline {2.2}Second subsection}{1}
+\contentsline {section}{\numberline {3}Diamonds}{1}

@@ -1,0 +1,55 @@
+\documentclass{article}
+% this is a comment
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.png,.jpg}
+
+% shortcuts / macro's / variables. textt = typewriter style font
+\newcommand{\dataframe}{\texttt{data.frame}}
+\author{P van der Hoeven}
+\title{bla bla}
+\date{15 april 2016}
+
+\begin{document}
+
+% makes a title page
+\maketitle
+\tableofcontents
+\section{getting started}
+\label{sec:GettingStarted}
+This is the  first section of our document. We will only talk about \dataframe{}s.
+
+A new paragraph comes after a blank line
+
+\section{more information}
+\label{sec:MoreInfo}
+Here is another section. In Section~\ref{sec:GettingStarted} we learned about \dataframe{}s.
+
+\subsection{First subsection}
+\label{FirstSub}
+Content for a subsection
+
+\subsection{Second subsection}
+\label{SecondSub}
+More content that is nested in Section~\ref{sec:MoreInfo}
+
+\section{Diamonds}
+\label{sec:Diamonds}
+
+% weave R code
+<<diamonds-model>>=
+# load ggplot
+require(ggplot2)
+data("diamonds")
+head(diamonds)
+
+mod1 <- lm(price~carat + cut, data=diamonds)
+summary(mod1)
+@
+
+The diamonds are plotted in Figure~\ref{fig:diamonds-pot}
+% create plot
+<<diamonds-plot,fig.cap="Scatterplot of diamonds", out.width='.95\\linewidth', dev='png'>>=
+ggplot(diamonds, aes(x=carat, y=price, color=color)) + geom_point()
+@
+
+\end{document}
